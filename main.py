@@ -342,4 +342,3 @@ if __name__ == "__main__":
         processor.start()
     except Exception as e:
         logging.error("An error occurred: %s", e)
-  
