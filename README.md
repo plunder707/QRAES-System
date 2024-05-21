@@ -27,11 +27,142 @@ Authentication: Implements multi-factor and FIDO2 authentication mechanisms to e
 ## Installation
 
 ```bash
-# Clone the repository
+Prerequisites
+Anaconda or Miniconda: Make sure you have Anaconda or Miniconda installed. You can download and install it from here.
+Nvidia Drivers and CUDA Toolkit: Ensure you have the appropriate Nvidia drivers and CUDA toolkit installed for GPU acceleration. Follow the CUDA installation guide for your operating system.
+Step-by-Step Setup Instructions
+1. Create a New Conda Environment
+Open your terminal and create a new conda environment. We'll use Python 3.8 for this setup.
+
+bash
+Copy code
+conda create -n qraes_env python=3.8
+conda activate qraes_env
+2. Install Dependencies with Conda
+Install the necessary dependencies using conda and pip:
+
+bash
+Copy code
+# Install cryptographic libraries
+conda install -c conda-forge cryptography
+
+# Install transformers and datasets for AI model
+conda install -c conda-forge transformers datasets
+
+# Install PyTorch with CUDA support (adjust the CUDA version as per your setup)
+conda install pytorch torchvision torchaudio cudatoolkit=11.3 -c pytorch
+
+# Install additional dependencies with pip
+pip install sawtooth-sdk fido2 numpy
+3. Clone the QRAES Repository
+Clone the QRAES repository from GitHub and navigate into the project directory:
+
+bash
+Copy code
 git clone https://github.com/yourusername/qraes.git
-
-# Navigate into the project directory
 cd qraes
+4. Install Project-Specific Dependencies
+Create a requirements.txt file with the following content:
 
-# Install required dependencies
+plaintext
+Copy code
+sawtooth-sdk
+fido2
+numpy
+secrets
+logging
+hashlib
+Then install the dependencies using pip:
+
+bash
+Copy code
 pip install -r requirements.txt
+5. Create a Test Script
+Create a Python script named test_qraes.py with the following content to test the setup:
+
+python
+Copy code
+from qraes import QRAES, QRAESTransactionProcessor
+
+# Initialize the QRAES system
+qraes = QRAES()
+
+# Example usage of QRAES features
+user_id = 'example_user'
+data_pattern = "example data pattern"
+password = "strong_password"
+qraes.use_new_features(user_id, data_pattern, password)
+
+# Start the blockchain transaction processor
+processor = QRAESTransactionProcessor("tcp://localhost:4004")
+processor.start()
+6. Run the Test Script
+Execute the script to verify that the setup is correct and the system works as expected:
+
+bash
+Copy code
+python test_qraes.py
+Full Setup Instructions
+Create and Activate the Conda Environment:
+
+bash
+Copy code
+conda create -n qraes_env python=3.8
+conda activate qraes_env
+Install Dependencies:
+
+bash
+Copy code
+conda install -c conda-forge cryptography transformers datasets
+conda install pytorch torchvision torchaudio cudatoolkit=11.3 -c pytorch
+pip install sawtooth-sdk fido2 numpy
+Clone the Repository and Navigate into the Project Directory:
+
+bash
+Copy code
+git clone https://github.com/yourusername/qraes.git
+cd qraes
+Create and Install from requirements.txt:
+
+Create a requirements.txt file with:
+
+plaintext
+Copy code
+sawtooth-sdk
+fido2
+numpy
+secrets
+logging
+hashlib
+Then install the dependencies:
+
+bash
+Copy code
+pip install -r requirements.txt
+Create a Test Script (test_qraes.py):
+
+python
+Copy code
+from qraes import QRAES, QRAESTransactionProcessor
+
+# Initialize the QRAES system
+qraes = QRAES()
+
+# Example usage of QRAES features
+user_id = 'example_user'
+data_pattern = "example data pattern"
+password = "strong_password"
+qraes.use_new_features(user_id, data_pattern, password)
+
+# Start the blockchain transaction processor
+processor = QRAESTransactionProcessor("tcp://localhost:4004")
+processor.start()
+Run the Test Script:
+
+bash
+Copy code
+python test_qraes.py
+Additional Considerations
+Ensure your Nvidia drivers and CUDA toolkit are correctly installed and configured for GPU acceleration.
+Adjust the CUDA version in the conda install command as per your setup (e.g., cudatoolkit=11.3).
+By following these steps, you'll set up a new conda environment, install all necessary dependencies, and run the Quantum-Resistant Adaptive Encryption System (QRAES).
