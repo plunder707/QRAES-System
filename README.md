@@ -4,11 +4,13 @@
 
 The Quantum-Resistant Adaptive Encryption System (QRAES) is a cutting-edge security solution that integrates advanced encryption methods, AI-driven threat analysis, and blockchain technology. This system offers robust, adaptive, and future-proof encryption by dynamically switching between AES and RSA encryption based on real-time threat assessments. It employs memory-hard functions and NTRU hashing to ensure quantum resistance and uses the Sawtooth blockchain for secure key management. Multi-factor and FIDO2 authentication further enhance security.
 
-##How It Works
+How It Works
 
 Initialization: Generates ECDSA and RSA keys, sets up AI models, and prepares datasets for training.
 Threat Analysis and Encryption: Uses AI to analyze data patterns and determine threat levels, dynamically switching encryption methods based on the analysis.
+
 Key Management: Manages encryption keys securely using the Sawtooth blockchain, ensuring tamper-proof and transparent transactions.
+
 Authentication: Implements multi-factor and FIDO2 authentication mechanisms to ensure that only authorized users can access the system.
 
 **Features**
